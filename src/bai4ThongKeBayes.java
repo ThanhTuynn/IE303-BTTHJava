@@ -27,7 +27,7 @@ public class bai4ThongKeBayes {
     }
 
 
-    // 📌 Đọc dữ liệu từ file
+    // Đọc dữ liệu từ file
     private static void loadData() {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -42,7 +42,7 @@ public class bai4ThongKeBayes {
         vocabulary.removeIf(word -> wordCount.get(word) < MIN_WORD_COUNT);
     }
 
-    // 📌 Xử lý từng dòng văn bản để thống kê tần suất từ và cặp từ
+    // Xử lý từng dòng văn bản để thống kê tần suất từ và cặp từ
     private static void processLine(String line) {
         String[] words = line.toLowerCase().split("\\s+"); // Chia tách thành từ
         for (int i = 0; i < words.length; i++) {
@@ -60,7 +60,7 @@ public class bai4ThongKeBayes {
         }
     }
 
-    // 📌 Sinh câu dựa trên mô hình Bayes
+    // Sinh câu dựa trên mô hình Bayes
     private static String generateSentence(String startWord, int maxWords) {
         StringBuilder sentence = new StringBuilder(startWord);
         String currentWord = startWord;
@@ -75,7 +75,7 @@ public class bai4ThongKeBayes {
         return sentence.toString();
     }
 
-    // 📌 Tìm từ tiếp theo theo xác suất Bayes
+    // Tìm từ tiếp theo theo xác suất Bayes
     private static String getNextWord(String currentWord) {
         Map<String, Integer> nextWords = bigramCount.getOrDefault(currentWord, new HashMap<>());
         if (nextWords.isEmpty()) return null;
